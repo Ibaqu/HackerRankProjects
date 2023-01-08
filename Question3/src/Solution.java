@@ -16,10 +16,17 @@ class Result {
      */
 
     public static String kangaroo(int x1, int v1, int x2, int v2) {
-        if (x1 < x2 && v1 < v2) {
-            return "NO";
-        } else {
+
+        int distanceDecreasing = v1 - v2;
+        int distanceBetween = x2 - x1;
+
+        // If the distance between them is a multiple of the decreasing distance due to their speeds
+        // then they will eventually meet
+
+        if ((v1 > v2) && (distanceBetween % distanceDecreasing == 0)) {
             return "YES";
+        } else {
+            return "NO";
         }
     }
 
