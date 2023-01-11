@@ -17,22 +17,28 @@ class Result {
      */
 
     public static int birthday(List<Integer> sequence, int day, int month) {
+        System.out.println("Day : " + day);
+        System.out.println("Month : " + month);
         int count = 0;
 
-        // Length has to equal to month
-
-        // Sum should equal to day
-
-        // Contiguous segment
         for (int i = 0; i < sequence.size() - day; i++) {
-
+            if (sum(sequence, day) == month) {
+                count++;
+            }
         }
 
         return count;
     }
 
+    public static int sum(List<Integer> sequence, int tally) {
+        int sum = 0;
 
+        if (tally - 1 < 0) {
+            sum = sequence.get(tally) + sum(sequence, tally - 1);
+        }
 
+        return sum;
+    }
 }
 
 public class Solution {
