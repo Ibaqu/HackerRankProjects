@@ -1,6 +1,7 @@
 import java.io.*;
 import java.util.*;
 import java.util.stream.*;
+
 import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
 
@@ -16,13 +17,13 @@ class Result {
      *  3. INTEGER m
      */
 
-    public static int birthday(List<Integer> sequence, int day, int month) {
-        System.out.println("Day : " + day);
-        System.out.println("Month : " + month);
+    public static int birthday(List<Integer> sequence, int total, int seqment) {
         int count = 0;
 
-        for (int i = 0; i < sequence.size() - day; i++) {
-            if (sum(sequence, day) == month) {
+        for (int i = 0; i <= sequence.size() - seqment; i++) {
+            List<Integer> subseq = sequence.subList(0 + i, seqment + i);
+
+            if (sum(subseq) == total) {
                 count++;
             }
         }
@@ -30,13 +31,11 @@ class Result {
         return count;
     }
 
-    public static int sum(List<Integer> sequence, int tally) {
+    public static int sum(List<Integer> sequence) {
         int sum = 0;
-
-        if (tally - 1 < 0) {
-            sum = sequence.get(tally) + sum(sequence, tally - 1);
+        for (int integer : sequence) {
+            sum += integer;
         }
-
         return sum;
     }
 }
