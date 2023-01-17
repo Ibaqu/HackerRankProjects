@@ -32,7 +32,7 @@ class Result {
             }
         } else  if (year == 1918) {
             System.out.println("Transition Year");
-            date = "27.09.";
+            date = "26.09.";
         } else if (year > 1918) {
             System.out.println("Gregorian Calender");
             // Check if year is a leap year
